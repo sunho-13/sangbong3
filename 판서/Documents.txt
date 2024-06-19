@@ -1,0 +1,666 @@
+        // git 무료 서버
+        // https://github.com/
+        // https://gitlab.com/
+        // https://bitbucket.org/
+
+        // git 무료 클라이언트
+        // https://tortoisegit.org/
+        // https://www.sourcetreeapp.com/
+        // https://desktop.github.com/
+
+GIT Repository 1개는 1개의 프로젝트를 저장하는게 원칙입니다.
+그러나 파일을 보관하거나 여러개의 프로젝트를 저장하는 경우도 있습니다. 이럴때는 CI/CD 를 사용하기 어렵습니다.
+
+강준서 (예비군훈련)
+고수재 (예비군훈련)
+권영석 (예비군훈련)
+김준혁 (예비군훈련)
+박선우 (예비군훈련)
+유병훈 (예비군훈련)
+
+
+MVC 
+Model
+View
+Controller
+
+Spring framework 5, Spring Boot 3.x
+Egov framework
+PHP Laravel
+Python Django
+
+
+언어의 조건문 (if, if ~ else ~, if ~ else if ~ else if ~ else ~ , switch/break)
+continue : 조건문 검사하기 위하여 올라간다.
+break : 블록을 빠져 나갑니다.
+return : 메소드(함수를) 빠져 나갑니다.
+
+조건식 : 논리값이 필요해요.
+
+if ( 조건식 ) {
+        조건식이 참일 경우에 실행해요.
+        ....
+        {
+
+        }
+}
+
+if ( 조건식 ) 문장;
+if ( 조건식 )
+    문장;
+
+if ( 거짓 ) {
+        1;
+} else if ( 거짓 ) {
+        2;
+} else if ( 참 ) {
+        3;
+        if ( 거짓 ) {
+                6;
+        } else {
+                7;
+        }
+} else if ( 참 ) {
+        4;
+} else {
+        5;
+}
+
+
+
+
+switch ( 데이터[변수/리턴값있는메소드] ) {
+        case 값1 :
+                문장;
+                문장;
+                break;
+        case 값2 :
+                문장;
+                문장;
+        case 값3 :
+        case 값4 :
+                문장;
+                break;
+        default :
+                문장;
+                문장;
+}
+데이터가 값1/값2/값3 일때 해당 지역의 문장을 실행한다.
+break; 를 만나면 빠져나간다.
+해당하는 값이 없으면 default 지역의 문장을 실행한다.
+
+
+switch (월) {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+                31 일로 처리;
+                break;
+        case 2:
+                윤년계산으로 처리;
+                break;
+        default:
+                30 일로 처리
+}
+
+
+
+
+언어의 반복문 (Loop)
+
+for 반복문
+for (초기식1,초기식2,...; 조건식; 증감식1, 증감식2,..) {
+        실행할 반복문들...
+}
+1. 초기식 실행
+2. 조건식 검사하여 거짓이면 Loop 종료
+3. 실행할 반복문들 실행한다.
+4. 증감식 실행
+2.
+3.
+4.
+2.
+3.
+4......
+
+for ( int i = 10; i > 0; i-- ) {
+        계산 실행 반복문장들
+}
+i = 10
+i(10) > 0 => 참
+반복문장들 실행
+i--
+i(9) > 0 => 참
+반복문장들 실행
+
+for (;;) {
+
+}
+
+
+while 반복문
+
+while ( 조건식 ) {
+        반복 문장들
+}
+1. 조건식이 참이면 반복문장들 실행
+2. 반복문장들을 실행하고 다시 조건식을 검증하러 위로 올라간다.
+1. 조건식이 참이면 반복문장들 실행
+2. 반복문장들을 실행하고 다시 조건식을 검증하러 위로 올라간다.
+1.
+2.
+
+
+do while 반복문
+do {
+        반복 문장들
+} while ( 조건식 );
+
+1. 반복문장들 실행
+2. 조건식이 참이면 위로 올라가서 반복문장들 실행
+1.
+2.
+1.
+2.
+
+
+loop {
+        if ( 짝수인지 검사) {
+                합산
+        }
+}
+
+loop {
+        짝수로만 반복을 한다.
+        합산을 한다.
+}
+
+https://school.programmers.co.kr/
+문제 풀이 github
+https://github.com/sincerus7/springboot.git
+
+
+인간이 언어를 개발하고 컴파일을 하면 운영체제에서 실행이 가능한 바이너리 코드가 생깁니다.
+int i = 10; 고급언어
+
+0xA0B1C3 => 기계코드
+
+Java 언어
+컴파일하면 *.class 파일이 생깁니다. (바이트코드)
+JVM 실행
+윈도우 JVM, 맥 JVM, Linux JVM
+Java Virtual Machine
+
+[접근제한자] class 클래스이름 [extends 부모클래스] [implements 부모인터페이스,...] {
+        클래스를 선언합니다.
+        ...
+        ...
+        /**
+        java documents
+        */
+        [접근제한자] 데이터형 멤버변수1이름;
+        [접근제한자] 데이터형 멤버변수2이름;
+        멤버변수도 N 개 가능함
+
+
+        /**
+        java documents
+        */
+        [접근제한자] 데이터형 멤버메소드1이름(데이터형 매개변수1이름, 데이터형 매개변수2이름, ...) [throws 부모가 Throable클래스] {
+                메소드를 선언합니다.
+                ...
+                return 데이터형;
+        }
+
+        [접근제한자] 데이터형 멤버메소드2이름(데이터형 매개변수1이름, 데이터형 매개변수2이름, ...) [throws 부모가 Throable클래스] {
+                메소드를 선언합니다.
+                ...
+                return 데이터형;
+        }
+        멤버메소드는 N 개 가능함.
+
+        @Override
+        [접근제한자] 부모인터페이스의메소드(...) {
+                부모인터페이스의 메소드 몸체를 구현해야 합니다
+                if, for, while, ...;
+        }
+}
+
+
+자동차 설계 {
+        운전대
+   운전사
+       바퀴
+    엔진
+창문
+}
+
+컴퓨터
+변수 : 값이 변하는 데이터 타입이 같은 저장공간 (variable)
+int i;
+i = 10;
+i = 20;
+
+상수 : 값이 변하지 않는 저장공간 (리터럴, literal)
+const int i = 10;
+i = 20; 컴파일에러
+
+final int i; (클래스 생성자에서 값을 한 번만 초기화할 수 있다. 그 이후로는 변경 불가능)
+생성자 {
+        i = 10;
+}
+
+
+int i = 10;
+int j = i;
+
+String s1 = "123";
+String s2 = s1;
+
+값형 타입은 변수의 저장 공간에 '값'이 저장됩니다.
+int a = 10;
+
+참조형 타입은 변수의 저장 공간에 &주소(*변수명) 가 저장됩니다.
+String s = "abcdef";
+
+Java 배열
+데이터타입[] 변수명; => 선언
+데이터타입[] 변수명 = new 데이터타입[] {....}; => 선언과 초기화
+
+데이터타입[][] 변수명 = new 데이터타입[6][5];
+@ @ @ @ @ @
+@ @ @ @ @ @
+@ @ @ @ @ @
+@ @ @ @ @ @
+@ @ @ @ @ @
+
+
+데이터타입[][] 변수명 = new 데이터타입[6][];
+@ @ @ @ @ @
+
+변수명[0] = new 데이터타입[4];
+변수명[1] = new 데이터타입[2];
+변수명[2] = new 데이터타입[3];
+변수명[3] = new 데이터타입[7];
+변수명[4] = new 데이터타입[8];
+변수명[5] = new 데이터타입[5];
+
+public Enum 열거형이름 {
+        열거형아이템1이름,
+        열거형아이템2이름,
+        열거형아이템3이름,
+        열거형아이템4이름,
+}
+Enum 은 제한된 아이템의 값만 가질수 있는 데이터 형이다.
+Enum 을 int나 String 으로 기본값을 가지게 만들 수 도 있다.
+
+객체지향의 특징
+캡슐화 : 필드는 무조건 private 해야 한다. 필드값을 읽을려면 Getter, 저장할려면 Setter 를 사용해야 한다.
+상속 :
+다형성 :
+
+객체의 속성 : 변수, 값, 프로퍼티, 멤버변수, 필드
+객체의 동작 : 메소드, 생성자(생성할때 자동 동작하느냐 수동 동작하느냐)
+
+HasA 관계 : 클래스 안에 클래스를 멤버변수로 가지는 형태 (집합관계)
+IsA 관계 : 상속 관계
+사용관계 : 객체가 다른객체의 메소드를 호출하는 형태
+
+다형성 :
+1. Overloading : 메소드의 이름은 같으나 매개변수의 형태가 다른 경우
+
+public int add( int a, int b) {
+        ...
+}
+
+public double add( double a, double b) {
+        ...
+}
+
+2. Overidding : 부모메소드의 이름과 배개변수 형태가 같을지라도 자식이 그 메소드를 다시 선언해서 사용할 수 있는 경우
+
+public class Parent {
+        public void drive() {
+                직선만 운행;
+        }
+}
+
+public class Child extends Parent {
+        public void drive() {
+                우회전도 가능, 좌회전도 가능
+                super.drive();
+        }
+}
+
+Child c = new Child();
+c.drive();
+
+stryArray[0] = new String("Java");
+
+
+차 <- 기아차 <- 모닝
+클래스 (설계도, 틀, 도안, )
+클래스 메소드 (정적 메소드) : static 예약어로 선언한다., new 없어도 사용 가능하다. 전체 클래스에서 1개만 존재한다.
+        사용방법 => 클래스명.클래스메소드명
+클래스 변수 (정적 멤버) : static 예약어로 선언한다., new 없어도 사용 가능하다. 전체 클래스에서 1개만 존재한다.
+        사용방법 => 클래스명.클래스변수명
+
+public class 모닝 extends 기아차 {
+        public static final int CC = 800;
+        public static void ReCall() {
+                전체 모닝은 운행중단 하고 서비스센터로 입고;
+        }
+        private Color bodyColor;
+        private Tire[] tires;
+        private CarNumber carNumber;
+        Getter...
+        Setter...
+        public void run() {
+                달린다.;
+        }
+
+        public 모닝() {
+                // 기본생성자 (Java 가 자동으로 만들어준다. 개발자가 명시적으로 선언하면 선언한 기본생성자를 실행한다.)
+                // 모닝 서울22차9821 = new 모닝();
+        }
+
+        public 모닝(Color color) {
+                // 사용자 정의 생성자 (개발자가 선언한다. 이것이 존재하면 Java 가 자동으로 만들어주는 기본생성자는 사용 불가능)
+                this.bodyColor = color;
+                // 모닝 서울22차9821 = new 모닝(노랑);
+        }
+
+        public 모닝(Color color, Tire[] tires) {
+                // 사용자 정의 생성자 (개발자가 선언한다. 이것이 존재하면 Java 가 자동으로 만들어주는 기본생성자는 사용 불가능)
+                // this.bodyColor = color;
+                this(color);
+                this.tires = tires;
+                // 모닝 서울22차9821 = new 모닝(노랑, new Tire[] {160, 160, 160, 160});
+        }
+
+        public 모닝(Color color, Tire[] tires, CarNumber carNumber) {
+                // 사용자 정의 생성자 (개발자가 선언한다. 이것이 존재하면 Java 가 자동으로 만들어주는 기본생성자는 사용 불가능)
+                // this.bodyColor = color;
+                // this.tires = tires;
+                this(color, tires);
+                this.carNumber = carNumber;
+                // 모닝 서울22차9821 = new 모닝(노랑, new Tire[] {160, 160, 160, 160}, new CarNumber("서울22차9821"));
+        }
+
+        [접근제한자] 리턴하는데이터타입 메소드이름(데이터타입 매개변수1이름, 데이터타입 매개변수2이름, ...) {
+                메소드에서 실행할 내용 문장들;
+                ....
+        }
+
+        public String aaa() {
+                // 메소드에서 실행할 내용 문장들;
+                ....
+                String s = "abcd";
+                int i = 10;
+                return Integer.parseInt(s);
+        }
+
+        public void add(String name, int ... num) {
+
+        }
+}
+모닝.CC
+모닝.ReCall();
+
+접근제한자
+public : 모두다 접근 가능
+protected : 직계 자손만 접근 가능 (자식들이 super로 사용 가능함)
+private : 나(this)만 접근 가능
+
+
+서울22차9821
+객체 (클래스에 의하여 실제로 힙 메모리에 생성되는 실체적인 참조형태 값)
+인스턴스 메소드(멤버메소드) : new 로 생성된 객체 안에 존재하는 메소드.
+        사용방법 => 객체변수명.메소드명(....)
+인스턴스 변수 (필드,멤버변수,객체변수) : new 로 생성된 객체안에 존재하는 변수.
+        사용방법 => 객체변수명.Getter, 객체변수명.Setter 이용하는게 최선
+
+모닝 서울22차9821 = new 모닝();
+서울22차9821.run();
+서울22차9821.setColor(빨강);
+서울22차9821.color = 빨강; // 멤버변수를 public 으로 하고 직접 접근하는 방법인데 이 방법은 아주 사악하다.
+
+Car ccc = new Car("그랜저", "파랑");
+
+https://github.com/sincerus7/sangbong3_1.git
+https://github.com/sincerus7/sangbong3_2.git
+https://github.com/sincerus7/sangbong3_3.git
+https://github.com/sincerus7/sangbong3_4.git
+
+ArrayList : Java 의 1차원적인 배열 컬렉션
+배열에 값을 추가 => 길이가 늘어납니다.
+배열에 값을 삭제 => 길이가 감소합니다.
+배열의 길이를 알고자 할때는 size() 사용합니다.
+ArrayList 는 List 인터페이스를 상속 받은 클래스
+
+List<데이터타입> 변수명 = new ArrayList<>();
+ArrayList<데이터타입> 변수명 = new ArrayList<>();
+
+
+부모클래스 메소드 5개
+
+자식클래스 메소드 10개
+
+손자클래스 메소드 7개
+
+
+부모클래스 a = new 손자클래스();
+a.부모메소드5개
+((자식클래스)a).부모메소드10개 + 할아버지메소드5개
+((손자클래스)a).자신메소드7개 + 아버지메소드10개 + 할아버지메소드5개
+
+부모클래스 b = new 자식클래스();
+
+부모클래스 b = new 부모클래스();
+b.부모메소드5개
+((자식클래스)b).자신메소드10개 + 부모메소드5개 (에러)
+
+
+JSON 은 {} 표현하는 문자 서술형 객체이다. 이름과 값으로 쌍을 이룬다. HashMap 컬렉션, RestFul API 의 데이터 처리 기본이다.
+"이름":"값"
+"이름":숫자값
+"이름":[..배열..]
+"이름":{..객체..}
+
+{
+        "roots" :
+        [
+                {
+                        "id":1,
+                        "productName":"수박바\"",
+                        "price":700
+                },
+                {
+                        "id":2,
+                        "productName":"'회오리바'",
+                        "price":800
+                }
+        ]
+}
+
+Database 읽기 => Java 객체 => JSON => JavaScript 객체 => 화면
+화면 => JavaScript 객체 => JSON,FORM,XML => Java 객체 => Database 저장
+
+서버와 서버의 통신
+다른 서버에서 데이터를 읽으려 한다. => RestFUL API => JSON => Java 객체 => Controller => Service/Service Implement/Repository => Database
+
+
+json-simple 라이브러리
+gson 라이브러리
+jackon 라이브러리
+
+
+public enum EColor {
+        White,
+        Black,
+        Gray,
+        Blue,
+        Red,
+}
+
+public class Phone {
+        private String model;
+        private EColor color;
+        private int makeYear;
+
+        // model 의 Getter
+        public String getModel() {
+                return this.model;
+        }
+
+        // model 의 Setter
+        public void setModel(String model) {
+                this.model = model;
+        }
+
+        // color 의 Getter
+
+        // color 의 Setter
+
+        // makeYear 의 Getter
+        public int getMakeYear() {
+                if ( this.makeYear <= 2020 ) {
+                        유효하지 않는 값은 유효한 값으로 변화하여 리턴한다.
+                }
+                return this.makeYear;
+        }
+
+        // mmakeYearodel 의 Setter
+        public void setMakeYear(int makeYear) {
+                if ( this.makeYear <= 2020 ) {
+                        유효하지 않는 값은 저장하지 않는다.
+                }
+                this.makeYear = makeYear;
+        }
+}
+
+
+phone
+model varchar(10),
+color varchar(5),
+make_year int,
+
+
+부모생성자 호출할때는 super(...); // 자신의 생성자에서만 호출 가능하다. (생성자에서만 생성자를 호출 할 수 있다.)
+부모메소드 호출할때는 super.메소드명(...);
+
+
+객체지향의 다형성은 Overloading, Overidding, 추상클래스 활용, 인터페이스 활용 등등
+
+부모클래스 타입을 사용하여 서로다른 자식객체를 변환하여 사용한다.
+
+
+
+BC 카드, Master 카드, 삼성카드, NH카드, KB카드, 신한카드, 유니온페이, 카카오페이....
+
+public interface 카드 {
+        boolean 결제한다(카드번호, 유효기간, 소유주명, 3자리넘버, 금액);
+}
+
+
+public class BC카드 implements 카드 {
+        @Override
+        public boolean 결제한다(카드번호, 유효기간, 소유주명, 3자리넘버, 금액) {
+                BC카드 서버에 접속한다.
+                카드번호가 유효한지 체크한다.
+                유효기간 체크한다.
+                실패하면 false
+                ...
+                성공하면 true 리턴
+        }
+}
+
+
+public class Master카드 implements 카드 {
+        @Override
+        public boolean 결제한다(카드번호, 유효기간, 소유주명, 3자리넘버, 금액) {
+                Master카드 서버에 접속한다.
+                ....
+                실패하면 false
+                ...
+                성공하면 true 리턴
+        }
+}
+
+
+public class 결제하는클래스 {
+        BC카드 bcCard = new BC카드();
+        Master카드 masterCard = new Master카드();
+        카드 paycard;
+
+        public 사용자결제(카드종류, 카드번호, 유효기간, 소유주명, 3자리넘버, 금액) {
+                if (카드종류 == BC) {
+                        paycard = bcCard;
+                        paycard.결제한다(카드번호, 유효기간, 소유주명, 3자리넘버);
+                } else if (카드종류 == 마스터카드) {
+                        paycard = masterCard;
+                        paycard.결제한다(카드번호, 유효기간, 소유주명, 3자리넘버);
+                }
+        }
+}
+
+
+        A 메소드 : 2개 껍데기만, a1, a2
+        B 클래스 : A 메소드2개 구현, 1개 메소드 b1
+        C 클래스 : A 메소드2개 구현, 2개 메소드 c1, c2
+        D 클래스 : B 클래스 상속, 2개 메소드 d1, d2
+        E 클래스 : C 클래스 상속, 2개 메소드 e1, e2
+
+        A aaa = new D();
+
+        A a = (A)aaa; // a.a1(), a.a2()
+        B b = (B)aaa; // b.a1(), b.a2(), b.b1();
+        D d = (D)aaa; // d.a1(), d.a2(), d.b1(), d.d1(), d.d2()
+        C c = (C)aaa; // c.a1(), c.a2(), c.c1(), c.c2() ----> Error
+        E e = (E)aaa; // e.a1(), e.a2(), e.c1(), e.c2(), e.e1(), e.e2() ----> Error
+
+        
+        A aaa = new B();
+        A aaa = new C();
+        A aaa = new D();
+        A aaa = new E();
+        
+예외처리 : 프로그램이 특정 예외가 발생하는 경우에 프로그래머가 처리할 수 있도록 하는것
+
+Exception 은 Database, 비지니스 로직의 시작과 끝 Transaction 이 완료 됩니다.
+RuntimeException 은 Transaction 을 Rollback 하거나 commit 하는것이 개발자가 처리할 수 있다.
+
+예외처리를 개발자가 핸들하려면
+
+try ~ catch ~
+try ~ catch ~ ... catch ~
+try ~ catch ~ ... catch ~ finally ~~
+
+try{
+        개발자가 코딩을 하는게 있어서 이 부분에서 예외가 발생할지도 모르는 블록
+        ...
+        ...
+        ...
+} catch ( 예외클래스A 변수명 ) {
+        예외클래스A 데이터타입의 예외가 발생했을때 이 부분이 자동으로 실행됨
+        ...
+} catch ( 예외클래스B 변수명 ) {
+        예외클래스B 데이터타입의 예외가 발생했을때 이 부분이 자동으로 실행됨
+        ...
+} catch ( 예외클래스C 변수명 ) {
+        예외클래스C 데이터타입의 예외가 발생했을때 이 부분이 자동으로 실행됨
+        ...
+} finally {
+        try 블록이 모두 실행됐을때 finally 가 실행됨
+        try 블록 실행중에 예외가 발생하여서 catch 가 실행되었을때 catch 가 실행된 후에 finally 실행됨
+}
+예외클래스A (손자) 예외클래스B (아들, A예외클래스와 무관) 예외클래스C(할아버지, A, B예외클래스와 무관)
+
+try 실행 하다가 A 예외가 발생하면 : try{} => catch(예외클래스C) {} => finally{}
+try 실행 하다가 B 예외가 발생하면 : try{} => catch(예외클래스B) {} => finally{}
+try 실행 하다가 C 예외가 발생하면 : try{} => catch(예외클래스C) {} => finally{}
+try 실행 하다가 예외가 없다면 : try{} => finally{}
