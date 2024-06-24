@@ -4,7 +4,9 @@ import java.util.Scanner;
 
 public class BankApplication {
     private AccountService accountService = new AccountService();
-    private AccountRepository accountRepository = new AccountRepository();
+    private AccountRepository accountRepository;
+    private AccountJSONRepository accountJsonRepository = new AccountJSONRepository();
+    private AccountFileRepository accountFileRepository = new AccountFileRepository();
 
     private void printHeader() {
         System.out.println("=====================================");
