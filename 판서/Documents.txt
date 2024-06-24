@@ -664,3 +664,16 @@ try 실행 하다가 A 예외가 발생하면 : try{} => catch(예외클래스C)
 try 실행 하다가 B 예외가 발생하면 : try{} => catch(예외클래스B) {} => finally{}
 try 실행 하다가 C 예외가 발생하면 : try{} => catch(예외클래스C) {} => finally{}
 try 실행 하다가 예외가 없다면 : try{} => finally{}
+
+
+
+JSON 파일 저장하고 읽기
+1. 라이브러리가 필요하다. json-simple 을 maven 의 POM.xml 에 추가 하거나 gradle 의 build.gradle 에 추가해야 한다.
+2. 구글에서 maven repository 를 검색하여 maven repository 홈페이지에 접속하고 json-simple 을 검색한다.
+3. Usages 가 가장 많은 버전을 선택하여, pom.xml 이나 build.gradle 의 문장을 복사한다.
+4. 자신의 프로젝트 pom.xml이나 build.gradle 에 붙여넣기를 하고 Maven update 또는 gradle refresh 를 한다.
+
+
+BankApplication 에 6번,7번을 추가한다.
+AccountRepository 클래스를 생성한다. AccountRepository 에 loadJson, saveJson 메소드를 생성한다.
+BankApplication 에서 6번 에 loadJson, 7번에 loadJson 을 실행한다.
