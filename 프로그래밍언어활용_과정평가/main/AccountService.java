@@ -1,6 +1,4 @@
-package com.softagape.sbgradlewebinit;
-
-import com.softagape.sbgradlewebinit.models.Account;
+package com.softagape.demo;
 
 import java.util.ArrayList;
 import java.util.List;

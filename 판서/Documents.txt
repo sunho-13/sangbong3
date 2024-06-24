@@ -465,7 +465,7 @@ b.부모메소드5개
 ((자식클래스)b).자신메소드10개 + 부모메소드5개 (에러)
 
 
-JSON 은 {} 표현하는 문자 서술형 객체이다. 이름과 값으로 쌍을 이룬다. HashMap 컬렉션, RestFul API 의 데이터 처리 기본이다.
+JSON 은 {} 표현하는 문자 서술형 객체이다. 키이름과 값으로 쌍을 이룬다. Map 인터페이스, HashMap 컬렉션, RestFul API 의 데이터 처리 기본이다.
 "이름":"값"
 "이름":숫자값
 "이름":[..배열..]
@@ -677,3 +677,32 @@ JSON 파일 저장하고 읽기
 BankApplication 에 6번,7번을 추가한다.
 AccountRepository 클래스를 생성한다. AccountRepository 에 loadJson, saveJson 메소드를 생성한다.
 BankApplication 에서 6번 에 loadJson, 7번에 loadJson 을 실행한다.
+BankApplication 에서 System.out.println("파일이름") ===> Scanner input 을 한다.
+loadJson(파일이름),  saveJson(파일이름) 을 호출한다.
+AccountRepository 에서는 System.out 이나 Scanner 클래스를 사용하지 않는다.
+
+
+MVC 소프트웨어공학의 개념은
+Model(객체,데이터) 과 View(화면) 와 Controller(제어,비지니스)의 영역을 분리해서
+향후 소프트웨어 재사용을 높이고 문제 해결을 쉽게 합니다.
+
+
+1. JSP, PHP 에서 사용자 행동하는 기능
+2. 1~2개의 jsp, php 파일 안에서 화면과 DB 의 데이터를 읽거나 쓰는 동작을 직접 구현합니다.
+
+Spring framework 또는 전자정부 프레임워크 에서는 
+1. Controller : HTTP POST, GET, PATCH, DELETE 이러한 사용자가 행동하는 기능을 구현합니다.
+2. Service : Service Implement 의 interface 를 구현합니다. (개발회사 마다 약간씩 다름)
+3. Service Implement : 데이터 객체를 DAO 에서 저장하거나 읽을수 있도록 하는 기능을 구현합니다.
+4. Data Access Object (DAO) : Database 에 접속하여서 데이터를 저장하거나 읽습니다.
+5. Model (데이터 객체, 자바빈)
+6. ORACLE, MSSQL, DB2, MySQL, ... : DBMS 
+
+
+Spring Boot 프레임워크 에서는 (Python Django 프레임워크)
+1. Controller : HTTP POST, GET, PATCH, DELETE 이러한 사용자가 행동하는 기능을 구현합니다.
+2. Service : Service Implement 의 interface 를 구현합니다. (개발회사 마다 약간씩 다름)
+3. Service Implement : 데이터 객체를 DAO 에서 저장하거나 읽을수 있도록 하는 기능을 구현합니다.
+4. Repository : 실제 저장공간(Database, 파일, 액셀, NOSQL 등) 에 접속하여서 데이터를 저장하거나 읽습니다.
+5. Model (데이터 객체, 자바빈)
+6. ORACLE, MSSQL, DB2, MySQL, NoSQL, JSON, Excel, File, ...

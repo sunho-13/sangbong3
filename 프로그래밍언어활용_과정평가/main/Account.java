@@ -1,4 +1,4 @@
-package com.softagape.sbgradlewebinit.models;
+package com.softagape.demo;
 
 import lombok.Getter;
 import lombok.Setter;
