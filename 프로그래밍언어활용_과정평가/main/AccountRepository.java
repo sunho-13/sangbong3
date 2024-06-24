@@ -10,10 +10,9 @@ import java.nio.charset.Charset;
 import java.util.List;
 
 public class AccountRepository {
-
-    public void loadJson(String fileName, List<Account> accountList) throws Exception {
-        if ( fileName == null || fileName.isEmpty()
-                || accountList == null ) {
+    private static final String fileName = "data.json";
+    public void loadJson(List<Account> accountList) throws Exception {
+        if ( accountList == null ) {
             return;
         }
         JSONParser parser = new JSONParser();
@@ -34,9 +33,8 @@ public class AccountRepository {
         }
     }
 
-    public void saveJson(String fileName, List<Account> accountList) throws Exception {
-        if ( fileName == null || fileName.isEmpty()
-                || accountList == null || accountList.size() <= 0 ) {
+    public void saveJson(List<Account> accountList) throws Exception {
+        if ( accountList == null || accountList.size() <= 0 ) {
             return;
         }
         JSONArray jsonArray = new JSONArray();

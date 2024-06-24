@@ -7,9 +7,9 @@ public class BankApplication {
     private AccountRepository accountRepository = new AccountRepository();
 
     private void printHeader() {
-        System.out.println("=========================================================");
-        System.out.println("1.계좌생성|2.계좌목록|3.예금|4.출금|5.종료|6.파일읽기|7.파일저장");
-        System.out.println("=========================================================");
+        System.out.println("=====================================");
+        System.out.println("1.계좌생성|2.계좌목록|3.예금|4.출금|5.종료");
+        System.out.println("=====================================");
     }
 
     private int getChoice(Scanner input) throws Exception {
@@ -32,6 +32,7 @@ public class BankApplication {
         int money = Integer.parseInt(current);
 
         this.accountService.addAccount(new Account(name, bankNumber, money));
+        this.saveFile();
     }
 
     private void printAccounts() {
@@ -47,6 +48,7 @@ public class BankApplication {
             return;
         }
         if (this.accountService.deposit(result.getBankNumber(), result.getCurrent())) {
+            this.saveFile();
             System.out.println("결과: 예금이 성공되었습니다.");
         }
     }
@@ -58,6 +60,7 @@ public class BankApplication {
             return;
         }
         if (this.accountService.withdraw(result.getBankNumber(), result.getCurrent())) {
+            this.saveFile();
             System.out.println("결과: 출금이 성공되었습니다.");
         } else {
             System.out.println("에러: 출금이 안되었습니다.");
@@ -82,30 +85,24 @@ public class BankApplication {
         return new Account("임시명", bankNumber, money);
     }
 
-    private void loadFile(Scanner input) throws Exception {
-        System.out.println("--------");
-        System.out.println("파일읽기");
-        System.out.println("--------");
-
-        System.out.print("파일이름:");
-        String fileName = input.nextLine();
-        accountRepository.loadJson(fileName, accountService.getAllAccount());
+    private void loadFile() throws Exception {
+        accountRepository.loadJson(accountService.getAllAccount());
     }
 
-    private void saveFile(Scanner input) throws Exception {
-        System.out.println("--------");
-        System.out.println("파일저장");
-        System.out.println("--------");
-
-        System.out.print("파일이름:");
-        String fileName = input.nextLine();
-        accountRepository.saveJson(fileName, accountService.getAllAccount());
+    private void saveFile() throws Exception {
+        accountRepository.saveJson(accountService.getAllAccount());
     }
 
     public static void main(String[] args) {
         BankApplication bapp = new BankApplication();
         Scanner input = new Scanner(System.in);
         boolean run = true;
+
+        try {
+            bapp.loadFile();
+        } catch (Exception e) {
+            throw new RuntimeException("File Open Error !");
+        }
         while (run) {
             try {
                 bapp.printHeader();
@@ -125,12 +122,6 @@ public class BankApplication {
                         break;
                     case 5:
                         run = false;
-                        break;
-                    case 6:
-                        bapp.loadFile(input);
-                        break;
-                    case 7:
-                        bapp.saveFile(input);
                         break;
                     default:
                         System.out.println("!!! 잘못된 입력입니다. !!!");
