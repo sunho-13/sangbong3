@@ -4,6 +4,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.nio.charset.Charset;
@@ -18,11 +19,15 @@ public class AccountJSONRepository implements AccountRepository {
             return;
         }
         JSONParser parser = new JSONParser();
-        FileReader reader = new FileReader(fileName, Charset.defaultCharset());
+        File file = new File(fileName);
+        if ( !file.exists() ) {
+            return; // 파일이 없을때 실행하면 예외 없도록 처리함
+        }
+        FileReader reader = new FileReader(file, Charset.defaultCharset());
         JSONObject jsonObject = (JSONObject)parser.parse(reader);
 
         reader.close();
-        System.out.print(jsonObject);
+//        System.out.print(jsonObject);
 
         JSONArray jsonArray = (JSONArray) jsonObject.get("accounts");
         accountList.clear();
