@@ -11,13 +11,6 @@
 GIT Repository 1개는 1개의 프로젝트를 저장하는게 원칙입니다.
 그러나 파일을 보관하거나 여러개의 프로젝트를 저장하는 경우도 있습니다. 이럴때는 CI/CD 를 사용하기 어렵습니다.
 
-강준서 (예비군훈련)
-고수재 (예비군훈련)
-권영석 (예비군훈련)
-김준혁 (예비군훈련)
-박선우 (예비군훈련)
-유병훈 (예비군훈련)
-
 
 MVC 
 Model
@@ -736,5 +729,10 @@ Spring Boot 프레임워크 에서는 (Python Django 프레임워크)
 양서류 p = (양서류)메소드B(고양이);
 
 
+모든 프로그램 개발자는 CRUD 를 제대로 에러 없이 만들어야 하는게 기본기 입니다.
+C => Create, HTTP POST, Controller -> SeriveImple -> Service -> Repository/DAO -> DB(insert 생성)
+R => Read, HTTP GET, Controller -> SeriveImple -> Service -> Repository/DAO -> DB(select 검색, 조회)
+U => Update, HTTP PATCH, " (update 수정)
+D => Delete, HTTP DELETE, " (delete 삭제)
 
 
