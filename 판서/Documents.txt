@@ -459,7 +459,7 @@ b.부모메소드5개
 
 
 JSON 은 {} 표현하는 문자 서술형 객체이다. 키이름과 값으로 쌍을 이룬다. Map 인터페이스, HashMap 컬렉션, RestFul API 의 데이터 처리 기본이다.
-"이름":"값"
+"이름":"대부분의값을 문자열 날짜/시간/참/거짓"
 "이름":숫자값
 "이름":[..배열..]
 "이름":{..객체..}
@@ -738,8 +738,34 @@ D => Delete, HTTP DELETE, " (delete 삭제)
 모든 언어의 프로그래머 개발자의 기본 자질은 데이터형/데이터타입 을 제대로 맞추는데에 있다.
 리턴데이터타입 메소드(매개변수데이터타입 변수명, ...)
 
+Lombok 의 @Builder 의 역할
 
+클래스를 객체로 인스턴스할때 모든 필드의 값을 초기화 할수도 있고,
+ 어떤 필드의 값을 초기화 할수도 있는 매우 유용한 생성 메소드이다.
 
+        IPhoneBook phoneBook = PhoneBook.builder()
+                .id(this.getMaxId())
+                .name(name).group(group)
+                .phoneNumber(phoneNumber).email(email).build();
+
+        클래스명.builder().필드(값).필드2(값).필드3(값).....build();
+
+// 클래스의 기본생성자로 객체를 인스턴스하고 Setter 로 필드의 값을 저장하는 형태
+//        IPhoneBook phoneBook = new PhoneBook();
+//        phoneBook.setId(this.getMaxId());
+//        phoneBook.setName(name);
+//        phoneBook.setGroup(group);
+//        phoneBook.setPhoneNumber(phoneNumber);
+//        phoneBook.setEmail(email);
+
+// 클래스의 비기본생성자로 객체를 인스턴스하고 필드의 값을 초기화하는 형태
+//        IPhoneBook phoneBook = new PhoneBook(
+//                this.getMaxId()
+//                , name
+//                , group
+//                , phoneNumber
+//                , email
+//        );
 
 
 
