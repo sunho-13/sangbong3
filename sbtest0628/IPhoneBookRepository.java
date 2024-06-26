@@ -1,7 +1,5 @@
 package com.softagape.sbtest0628;
 
-import org.json.simple.JSONObject;
-
 import java.util.List;
 
 public interface IPhoneBookRepository<T> {

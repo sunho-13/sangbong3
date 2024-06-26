@@ -10,7 +10,7 @@ public class Sbtest0628Application {
             System.out.println("Error : You need program arguments (-j/-t) (filename) !");
             return;
         }
-        ControlApplication application = new ControlApplication();
+        ConsoleApplication application = new ConsoleApplication();
         Scanner input = new Scanner(System.in);
         boolean run = true;
 

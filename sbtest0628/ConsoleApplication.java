@@ -5,13 +5,13 @@ import com.softagape.sbtest0628.make.PhoneBook;
 import java.util.List;
 import java.util.Scanner;
 
-public class ControlApplication {
+public class ConsoleApplication {
     private IPhoneBookService phoneBookService;
     public void setPhoneBookService(IPhoneBookService phoneBookService) {
         this.phoneBookService = phoneBookService;
     }
 
-    public ControlApplication() {
+    public ConsoleApplication() {
     }
 
     public void printTitle() {
@@ -78,7 +78,9 @@ public class ControlApplication {
         System.out.print("이메일 :");
         String email = input.nextLine();
 
-        this.phoneBookService.insert(name, group, phone, email);
+        if (this.phoneBookService.insert(name, group, phone, email)) {
+            System.out.println("결과: 데이터 추가 성공되었습니다.");
+        }
     }
 
     public void update(Scanner input) throws Exception {
@@ -110,9 +112,9 @@ public class ControlApplication {
             return;
         }
         if (this.phoneBookService.remove(result.getId())) {
-            System.out.println("결과: 출금이 성공되었습니다.");
-        } else {
             System.out.println("결과: 데이터 삭제 성공되었습니다.");
+        } else {
+            System.out.println("결과: 데이터 삭제 실패되었습니다.");
         }
     }
 
@@ -127,7 +129,8 @@ public class ControlApplication {
                 System.out.println("ID 번호를 숫자로만 입력하세요.");
             }
         } while ( l <= 0 );
-        return this.phoneBookService.findById(l);
+        IPhoneBook iPhoneBook = (IPhoneBook)this.phoneBookService.findById(l);
+        return iPhoneBook;
     }
 
     private void printList(List<IPhoneBook> array) {

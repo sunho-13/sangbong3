@@ -735,4 +735,11 @@ R => Read, HTTP GET, Controller -> SeriveImple -> Service -> Repository/DAO -> D
 U => Update, HTTP PATCH, " (update 수정)
 D => Delete, HTTP DELETE, " (delete 삭제)
 
+모든 언어의 프로그래머 개발자의 기본 자질은 데이터형/데이터타입 을 제대로 맞추는데에 있다.
+리턴데이터타입 메소드(매개변수데이터타입 변수명, ...)
+
+
+
+
+
 
