@@ -6,9 +6,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ConsoleApplication {
-    private IPhoneBookService phoneBookService;
-    public void setPhoneBookService(IPhoneBookService phoneBookService) {
+    private IPhoneBookService<IPhoneBook> phoneBookService;
+    public void setPhoneBookService(IPhoneBookService<IPhoneBook> phoneBookService) throws Exception {
         this.phoneBookService = phoneBookService;
+        this.phoneBookService.loadData();
     }
 
     public ConsoleApplication() {
@@ -79,6 +80,7 @@ public class ConsoleApplication {
         String email = input.nextLine();
 
         if (this.phoneBookService.insert(name, group, phone, email)) {
+            this.phoneBookService.saveData();
             System.out.println("결과: 데이터 추가 성공되었습니다.");
         }
     }
@@ -101,6 +103,7 @@ public class ConsoleApplication {
                 .group(group)
                 .phoneNumber(phone).email(email).build();
         if (this.phoneBookService.update(update.getId(), update)) {
+            this.phoneBookService.saveData();
             System.out.println("결과: 데이터 수정 성공되었습니다.");
         }
     }
@@ -112,6 +115,7 @@ public class ConsoleApplication {
             return;
         }
         if (this.phoneBookService.remove(result.getId())) {
+            this.phoneBookService.saveData();
             System.out.println("결과: 데이터 삭제 성공되었습니다.");
         } else {
             System.out.println("결과: 데이터 삭제 실패되었습니다.");
