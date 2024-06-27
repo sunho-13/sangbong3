@@ -38,6 +38,7 @@ public class PhoneBookRepositoryTests {
         assertThat((String)jobject.get("group")).isEqualTo("Hobbies");
         assertThat((String)jobject.get("phoneNumber")).isEqualTo("1111-2222");
         assertThat((String)jobject.get("email")).isEqualTo("abcdefg@daum.net");
+        assertThat(jobject.toJSONString()).isEqualTo("{\"phoneNumber\":\"1111-2222\",\"name\":\"폰북\",\"id\":88,\"email\":\"abcdefg@daum.net\",\"group\":\"Hobbies\"}");
     }
 
     @Test
@@ -45,6 +46,7 @@ public class PhoneBookRepositoryTests {
         PhoneBookTextRepository repository = new PhoneBookTextRepository("test.json");
         Throwable ex = assertThrows(Exception.class, () -> repository.getObjectFromText(""));
         System.out.println(ex.toString());
+
         IPhoneBook phoneBook = repository.getObjectFromText("3,홍길동,Families,010-1111-1111,abcd@gmail.com");
         assertThat(phoneBook.getId()).isEqualTo(3L);
         assertThat(phoneBook.getName()).isEqualTo("홍길동");
