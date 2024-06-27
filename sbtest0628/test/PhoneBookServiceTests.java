@@ -4,13 +4,23 @@ import com.softagape.sbtest0628.make.PhoneBook;
 import com.softagape.sbtest0628.make.PhoneBookServiceImpl;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class PhoneBookServiceTests {
     @Test
     public void phoneBookServiceImplTest() throws Exception {
-        IPhoneBookService<IPhoneBook> service = new PhoneBookServiceImpl("-j", "");
-        assertThat(service.size()).isEqualTo(0);
+        IPhoneBookService<IPhoneBook> jsonService = new PhoneBookServiceImpl("-j", "test.json");
+        IPhoneBookService<IPhoneBook> textService = new PhoneBookServiceImpl("-t", "test.txt");
+        File jsonFile = new File("test.json");
+        File textFile = new File("test.txt");
+        jsonFile.delete();
+        textFile.delete();
+        assertThat(jsonFile.exists()).isEqualTo(false);
+        assertThat(textFile.exists()).isEqualTo(false);
+
+        assertThat(jsonService.size()).isEqualTo(0);
         IPhoneBook add1 = PhoneBook.builder().id(1L).name("add1")
                         .group(EPhoneGroup.Friends).phoneNumber("010-0000-0000")
                         .email("add1@gmail.com").build();
@@ -22,31 +32,68 @@ public class PhoneBookServiceTests {
                 .email("add3@gmail.com").build();
 
         // insert test
-        service.insert(add1);
-        assertThat(service.size()).isEqualTo(1);
-        service.insert(add2);
-        service.insert(add3);
+        jsonService.insert(add1);
+        textService.insert(add1);
+        assertThat(jsonService.size()).isEqualTo(1);
+        assertThat(textService.size()).isEqualTo(1);
+        jsonService.insert(add2);
+        jsonService.insert(add3);
+        textService.insert(add2);
+        textService.insert(add3);
         // size test
-        assertThat(service.size()).isEqualTo(3);
+        assertThat(jsonService.size()).isEqualTo(3);
+        assertThat(textService.size()).isEqualTo(3);
         // find test
-        IPhoneBook find = service.findById(2L);
+        IPhoneBook find = jsonService.findById(2L);
         assertThat(find.getName()).isEqualTo("add2");
         assertThat(find.getGroup()).isEqualTo(EPhoneGroup.Jobs);
         assertThat(find.getPhoneNumber()).isEqualTo("010-1111-0000");
         assertThat(find.getEmail()).isEqualTo("add2@gmail.com");
+
+        IPhoneBook find2 = textService.findById(2L);
+        assertThat(find2.getName()).isEqualTo("add2");
+        assertThat(find2.getGroup()).isEqualTo(EPhoneGroup.Jobs);
+        assertThat(find2.getPhoneNumber()).isEqualTo("010-1111-0000");
+        assertThat(find2.getEmail()).isEqualTo("add2@gmail.com");
         // maxId test
-        assertThat(service.getMaxId()).isEqualTo(4L);
+        assertThat(jsonService.getMaxId()).isEqualTo(4L);
+        assertThat(textService.getMaxId()).isEqualTo(4L);
         // remove test
-        assertThat(service.remove(2L)).isEqualTo(true);
-        assertThat(service.size()).isEqualTo(2);
+        assertThat(jsonService.remove(2L)).isEqualTo(true);
+        assertThat(jsonService.size()).isEqualTo(2);
+        assertThat(textService.remove(2L)).isEqualTo(true);
+        assertThat(textService.size()).isEqualTo(2);
         // getListFromName test
-        assertThat(service.getListFromName("add").size()).isEqualTo(2);
+        assertThat(jsonService.getListFromName("add").size()).isEqualTo(2);
+        assertThat(textService.getListFromName("add").size()).isEqualTo(2);
 
         // insert fields test
-        service.insert("add4", EPhoneGroup.Friends, "010-3222-3999", "add4@naver.com");
-        assertThat(service.size()).isEqualTo(3);
-        assertThat(service.getMaxId()).isEqualTo(5L);
+        jsonService.insert("add4", EPhoneGroup.Friends, "010-3222-3999", "add4@naver.com");
+        assertThat(jsonService.size()).isEqualTo(3);
+        assertThat(jsonService.getMaxId()).isEqualTo(5L);
+        textService.insert("add4", EPhoneGroup.Friends, "010-3222-3999", "add4@naver.com");
+        assertThat(textService.size()).isEqualTo(3);
+        assertThat(textService.getMaxId()).isEqualTo(5L);
         // getListFromName test
-        assertThat(service.getListFromGroup(EPhoneGroup.Friends).size()).isEqualTo(2);
+        assertThat(jsonService.getListFromGroup(EPhoneGroup.Friends).size()).isEqualTo(2);
+        assertThat(textService.getListFromGroup(EPhoneGroup.Friends).size()).isEqualTo(2);
+
+        // save file test
+        jsonService.saveData();
+        textService.saveData();
+        assertThat(jsonFile.exists()).isEqualTo(true);
+        assertThat(jsonFile.length()).isEqualTo(298L);
+        assertThat(textFile.exists()).isEqualTo(true);
+        assertThat(textFile.length()).isEqualTo(132L);
+
+        // load file test;
+        jsonService.getAllList().clear();
+        textService.getAllList().clear();
+        assertThat(jsonService.size()).isEqualTo(0);
+        assertThat(textService.size()).isEqualTo(0);
+        jsonService.loadData();
+        textService.loadData();
+        assertThat(jsonService.size()).isEqualTo(3);
+        assertThat(textService.size()).isEqualTo(3);
     }
 }
