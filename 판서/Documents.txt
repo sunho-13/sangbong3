@@ -810,3 +810,10 @@ Gateway : Router 기능 + 프로토콜 번역하고 변환 장비
    c) git 로컬리포지토리로 파일을 저장할때 사용하는 명령어는 ?
 10. a) git 원격리포지토리의 최신 버전에 해당하는 소스들을 나의 소스 작업 폴더로 파일을 가져올때 사용하는 명령어는 ?
     b) 나의 소스 작업 폴더에서 선택하는 몇개 파일들을 git 리포지토리로 저장하지 않고 취소/롤백 할때 사용하는 명령어는 ?
+
+
+https://www.codeup.kr/problem.php?id=1905
+https://www.codeup.kr/problem.php?id=1916
+https://www.codeup.kr/problem.php?id=1953
+https://www.codeup.kr/problem.php?id=3702
+https://www.codeup.kr/problem.php?id=3733
