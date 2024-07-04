@@ -911,3 +911,15 @@ IDE
 git
 문제발생 => 이슈등록 이슈담당자할당 
 
+
+
+
+drop database phonebook_db;
+drop user phonebook_user;
+create database phonebook_db character set utf8mb4 collate utf8mb4_general_ci;
+create user 'phonebook_user'@'%' identified by 'sangbong3!';
+grant all privileges on phonebook_db.* to 'phonebook_user'@'%' with grant option;
+flush privileges;
+
+
+
