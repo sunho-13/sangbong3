@@ -940,3 +940,13 @@ spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.Ph
 spring.jpa.generate-ddl=true
 spring.jpa.properties.hibernate.format_sql=true
 spring.jpa.properties.hibernate.enable_lazy_load_no_trans=true
+
+
+
+=== Category 테이블을 추가하고 클래스를 추가해야 할때 ====
+ICategory : Dto, Entity 에서 상속받을 getter, Setter.
+CategoryDto, CategoryEntity : 생성하세요.
+CategoryJpaRepository : PhoneBookJpaRepository 를 참고해서 만들어요.
+ICategoryService : IPhoneBookService 를 참고해서 만들어요.
+CategoryServiceImpl : PhoneBookServiceImpl 을 참고해서 만들어요.
+CategoryController : PhoneBookController 를 참고해서 만들어요.
