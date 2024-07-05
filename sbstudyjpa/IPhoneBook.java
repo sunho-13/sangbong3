@@ -1,4 +1,4 @@
-package com.softagape.mysqljpa;
+package com.softagape.myjpa;
 
 import java.io.Serializable;
 
@@ -9,8 +9,8 @@ public interface IPhoneBook extends Serializable {
     String getName();
     void setName(String name);
 
-    String getCategory();
-    void setCategory(String category);
+    ECategory getCategory();
+    void setCategory(ECategory category);
 
     String getPhoneNumber();
     void setPhoneNumber(String phoneNumber);
