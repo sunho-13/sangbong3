@@ -1,4 +1,4 @@
-package com.softagape.myjpa;
+package com.softagape.myjpa.phonebook;
 
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -19,7 +19,7 @@ public class PhoneBookController {
     private IPhoneBookService<IPhoneBook> phoneBookService;
 
     @PostMapping
-    public ResponseEntity<IPhoneBook> insertPB(@RequestBody PhoneBookRequest dto) {
+    public ResponseEntity<IPhoneBook> insert(@RequestBody PhoneBookRequest dto) {
         try {
             if ( dto == null ) {
                 return ResponseEntity.badRequest().build();
@@ -112,7 +112,7 @@ public class PhoneBookController {
     }
 
     @GetMapping("/ct/{category}")
-    public ResponseEntity<List<IPhoneBook>> findAllByCategoryContains(@PathVariable Integer category) {
+    public ResponseEntity<List<IPhoneBook>> findAllByCategory(@PathVariable Integer category) {
         try {
             if ( category == null ) {
                 return ResponseEntity.badRequest().build();

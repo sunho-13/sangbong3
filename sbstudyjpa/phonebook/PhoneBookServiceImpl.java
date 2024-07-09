@@ -1,4 +1,4 @@
-package com.softagape.myjpa;
+package com.softagape.myjpa.phonebook;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class PhoneBookServiceImpl implements IPhoneBookService<IPhoneBook> {
@@ -21,11 +20,24 @@ public class PhoneBookServiceImpl implements IPhoneBookService<IPhoneBook> {
 
     @Override
     public List<IPhoneBook> getAllList() {
-        List<IPhoneBook> list = new ArrayList<>();
-        for ( PhoneBookEntity entity : this.phoneBookJpaRepository.findAll() ) {
-            list.add( (IPhoneBook)entity );
+        List<IPhoneBook> result = this.getIPhoneBookList(this.phoneBookJpaRepository.findAll());
+        return result;
+    }
+
+    private List<IPhoneBook> getIPhoneBookList(List<PhoneBookEntity> list) {
+        if ( list == null || list.size() <= 0 ) {
+            return new ArrayList<>();
         }
-        return list;
+        // input : [PhoneBookEntity|PhoneBookEntity|PhoneBookEntity|PhoneBookEntity|PhoneBookEntity]
+        List<IPhoneBook> result = new ArrayList<>();
+        for( PhoneBookEntity entity : list ) {
+            result.add( (IPhoneBook)entity );
+        }
+//        List<IPhoneBook> result = list.stream()
+//                .map(entity -> (IPhoneBook)entity)
+//                .toList();
+        // return : [IPhoneBook|IPhoneBook|IPhoneBook|IPhoneBook|IPhoneBook]
+        return result;
     }
 
     @Override
@@ -91,13 +103,9 @@ public class PhoneBookServiceImpl implements IPhoneBookService<IPhoneBook> {
         if (findName == null || findName.isEmpty()) {
             return new ArrayList<>();
         }
-        List<PhoneBookEntity> list = this.phoneBookJpaRepository.findAllByNameContains(findName);
-        //PhoneBookEntity|PhoneBookEntity|PhoneBookEntity|PhoneBookEntity|PhoneBookEntity
-        List<IPhoneBook> result = new ArrayList<>();
-        for ( PhoneBookEntity item : list ) {
-            result.add((IPhoneBook) item);
-        }
-        //IPhoneBook|IPhoneBook|IPhoneBook|IPhoneBook|IPhoneBook
+        List<IPhoneBook> result = this.getIPhoneBookList(
+                this.phoneBookJpaRepository.findAllByNameContains(findName)
+        );
         return result;
     }
 
@@ -106,10 +114,7 @@ public class PhoneBookServiceImpl implements IPhoneBookService<IPhoneBook> {
         if (category == null) {
             return new ArrayList<>();
         }
-        List<PhoneBookEntity> list = this.phoneBookJpaRepository.findAllByCategory(category);
-        List<IPhoneBook> result = list.stream()
-                .map(x -> (IPhoneBook)x)
-                .toList();
+        List<IPhoneBook> result = this.getIPhoneBookList(this.phoneBookJpaRepository.findAllByCategory(category));
         return result;
     }
 
@@ -118,10 +123,7 @@ public class PhoneBookServiceImpl implements IPhoneBookService<IPhoneBook> {
         if (findPhone == null || findPhone.isEmpty()) {
             return new ArrayList<>();
         }
-        List<PhoneBookEntity> list = this.phoneBookJpaRepository.findAllByPhoneNumberContains(findPhone);
-        List<IPhoneBook> result = list.stream()
-                .map(item -> (IPhoneBook)item)
-                .toList();
+        List<IPhoneBook> result = this.getIPhoneBookList(this.phoneBookJpaRepository.findAllByPhoneNumberContains(findPhone));
         return result;
     }
 
@@ -130,12 +132,7 @@ public class PhoneBookServiceImpl implements IPhoneBookService<IPhoneBook> {
         if (findEmail == null || findEmail.isEmpty()) {
             return new ArrayList<>();
         }
-        List<PhoneBookEntity> list = this.phoneBookJpaRepository.findAllByEmailContains(findEmail);
-        //PhoneBookEntity|PhoneBookEntity|PhoneBookEntity|PhoneBookEntity|PhoneBookEntity
-        List<IPhoneBook> result = list.stream()
-                .map(node -> (IPhoneBook)node)
-                .collect(Collectors.toUnmodifiableList());
-        //IPhoneBook|IPhoneBook|IPhoneBook|IPhoneBook|IPhoneBook
+        List<IPhoneBook> result = this.getIPhoneBookList(this.phoneBookJpaRepository.findAllByEmailContains(findEmail));
         return result;
     }
 }

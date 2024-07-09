@@ -1,4 +1,4 @@
-package com.softagape.myjpa;
+package com.softagape.myjpa.phonebook;
 
 public enum ECategory {
     Friends(0),

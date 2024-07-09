@@ -1,4 +1,4 @@
-package com.softagape.myjpa;
+package com.softagape.myjpa.phonebook;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ public interface IPhoneBookService<T> {
     boolean remove(Long id) throws Exception;
     IPhoneBook update(Long id, T phoneBook) throws Exception;
     List<T> getListFromName(String findName);
-    List<T> getListFromCategory(ECategory phoneGroup);
+    List<T> getListFromCategory(ECategory category);
     List<T> getListFromPhoneNumber(String findPhone);
     List<T> getListFromEmail(String findEmail);
 }
