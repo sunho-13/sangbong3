@@ -1,6 +1,5 @@
 package com.softagape.myjpa.phonebook;
 
-import com.softagape.myjpa.category.CategoryDto;
 import com.softagape.myjpa.category.CategoryEntity;
 import com.softagape.myjpa.category.ICategory;
 import com.softagape.myjpa.category.ICategoryService;
@@ -23,7 +22,7 @@ public class PhoneBookController {
     private IPhoneBookService<IPhoneBook> phoneBookService;
 
     @Autowired
-    private ICategoryService categoryService;
+    private ICategoryService<ICategory> categoryService;
 
     @PostMapping
     public ResponseEntity<IPhoneBook> insert(@RequestBody PhoneBookRequest dto) {
@@ -36,7 +35,7 @@ public class PhoneBookController {
                 return ResponseEntity.badRequest().build();
             }
             if ( result.getCategory() != null ) {
-                ICategory find = (ICategory) this.categoryService.findById(result.getCategory().getId());
+                ICategory find = this.categoryService.findById(result.getCategory().getId());
                 result.setCategory(find);
             }
             return ResponseEntity.ok(result);
@@ -82,7 +81,7 @@ public class PhoneBookController {
                 return ResponseEntity.notFound().build();
             }
             if ( result.getCategory() != null ) {
-                ICategory find = (ICategory) this.categoryService.findById(result.getCategory().getId());
+                ICategory find = this.categoryService.findById(result.getCategory().getId());
                 result.setCategory(find);
             }
             return ResponseEntity.ok(result);
