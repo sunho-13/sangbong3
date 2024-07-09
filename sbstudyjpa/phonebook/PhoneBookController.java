@@ -1,5 +1,9 @@
 package com.softagape.myjpa.phonebook;
 
+import com.softagape.myjpa.category.CategoryDto;
+import com.softagape.myjpa.category.CategoryEntity;
+import com.softagape.myjpa.category.ICategory;
+import com.softagape.myjpa.category.ICategoryService;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +22,9 @@ public class PhoneBookController {
     @Autowired
     private IPhoneBookService<IPhoneBook> phoneBookService;
 
+    @Autowired
+    private ICategoryService categoryService;
+
     @PostMapping
     public ResponseEntity<IPhoneBook> insert(@RequestBody PhoneBookRequest dto) {
         try {
@@ -27,6 +34,10 @@ public class PhoneBookController {
             IPhoneBook result = this.phoneBookService.insert(dto);
             if ( result == null ) {
                 return ResponseEntity.badRequest().build();
+            }
+            if ( result.getCategory() != null ) {
+                ICategory find = (ICategory) this.categoryService.findById(result.getCategory().getId());
+                result.setCategory(find);
             }
             return ResponseEntity.ok(result);
         } catch ( Exception ex ) {
@@ -69,6 +80,10 @@ public class PhoneBookController {
             IPhoneBook result = this.phoneBookService.update(id, dto);
             if ( result == null ) {
                 return ResponseEntity.notFound().build();
+            }
+            if ( result.getCategory() != null ) {
+                ICategory find = (ICategory) this.categoryService.findById(result.getCategory().getId());
+                result.setCategory(find);
             }
             return ResponseEntity.ok(result);
         } catch ( Exception ex ) {
@@ -117,7 +132,10 @@ public class PhoneBookController {
             if ( category == null ) {
                 return ResponseEntity.badRequest().build();
             }
-            List<IPhoneBook> result = this.phoneBookService.getListFromCategory(ECategory.integerOf(category));
+            CategoryEntity categoryDto = CategoryEntity.builder()
+                    .id(Long.parseLong(category.toString()))
+                    .build();
+            List<IPhoneBook> result = this.phoneBookService.getListFromCategory(categoryDto);
             if ( result == null || result.size() <= 0 ) {
                 return ResponseEntity.notFound().build();
             }

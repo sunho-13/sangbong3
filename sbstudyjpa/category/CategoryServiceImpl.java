@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CategoryServiceImpl implements ICategoryService {
+public class CategoryServiceImpl implements ICategoryService<ICategory> {
     @Autowired
     private CategoryJpaRepository categoryJpaRepository;
 

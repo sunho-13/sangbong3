@@ -1,5 +1,8 @@
 package com.softagape.myjpa.phonebook;
 
+import com.softagape.myjpa.category.CategoryEntity;
+import com.softagape.myjpa.category.CategoryJpaRepository;
+import com.softagape.myjpa.category.ICategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +14,9 @@ import java.util.Optional;
 public class PhoneBookServiceImpl implements IPhoneBookService<IPhoneBook> {
     @Autowired
     private PhoneBookJpaRepository phoneBookJpaRepository;
+
+//    @Autowired
+//    private CategoryJpaRepository categoryJpaRepository;
 
     @Override
     public IPhoneBook findById(Long id) {
@@ -38,15 +44,6 @@ public class PhoneBookServiceImpl implements IPhoneBookService<IPhoneBook> {
 //                .toList();
         // return : [IPhoneBook|IPhoneBook|IPhoneBook|IPhoneBook|IPhoneBook]
         return result;
-    }
-
-    @Override
-    public IPhoneBook insert(String name, ECategory category, String phoneNumber, String email) throws Exception {
-        PhoneBookDto phoneBook = PhoneBookDto.builder()
-                .id(0L)
-                .name(name).category(category)
-                .phoneNumber(phoneNumber).email(email).build();
-        return this.insert(phoneBook);
     }
 
     @Override
@@ -110,11 +107,13 @@ public class PhoneBookServiceImpl implements IPhoneBookService<IPhoneBook> {
     }
 
     @Override
-    public List<IPhoneBook> getListFromCategory(ECategory category) {
+    public List<IPhoneBook> getListFromCategory(ICategory category) {
         if (category == null) {
             return new ArrayList<>();
         }
-        List<IPhoneBook> result = this.getIPhoneBookList(this.phoneBookJpaRepository.findAllByCategory(category));
+        List<IPhoneBook> result = this.getIPhoneBookList(
+                this.phoneBookJpaRepository.findAllByCategory((CategoryEntity)category)
+        );
         return result;
     }
 

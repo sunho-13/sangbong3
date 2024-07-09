@@ -24,7 +24,7 @@ public class CategoryController {
             if ( dto == null ) {
                 return ResponseEntity.badRequest().build();
             }
-            ICategory result = this.categoryService.insert(dto);
+            ICategory result = (ICategory) this.categoryService.insert(dto);
             if ( result == null ) {
                 return ResponseEntity.badRequest().build();
             }
@@ -66,7 +66,7 @@ public class CategoryController {
             if ( id == null || dto == null ) {
                 return ResponseEntity.badRequest().build();
             }
-            ICategory result = this.categoryService.update(id, dto);
+            ICategory result = (ICategory) this.categoryService.update(id, dto);
             if ( result == null ) {
                 return ResponseEntity.notFound().build();
             }
@@ -83,7 +83,7 @@ public class CategoryController {
             if ( id == null || id <= 0 ) {
                 return ResponseEntity.badRequest().build();
             }
-            ICategory result = this.categoryService.findById(id);
+            ICategory result = (ICategory) this.categoryService.findById(id);
             if ( result == null ) {
                 return ResponseEntity.notFound().build();
             }
