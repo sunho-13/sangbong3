@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/Car_Tire_Motocycle" isTestSource="false" packagePrefix="com.softagape.sbgradlewebinit.models" />
+      <sourceFolder url="file://$MODULE_DIR$/demoJson" isTestSource="false" packagePrefix="com.softagape.demo" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
